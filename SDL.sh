@@ -21,6 +21,8 @@
 #
 # Release History:
 # 2024.04.05 - Initial release, Version 0.01
+# 2024.04.05 - Version 0.02: Added check for filename longer than 8 characters
+#                          : Updated final message to tell user they can use the SD Card in their Main Controller Card
 #
 # NOTE: to change hostname on BTT system, use: "sudo hostnamectl set-hostname <newhostname>"
 #
@@ -302,7 +304,7 @@ getFileName() {
     read -p "$invalidPromptString Enter filename.ext: " fileName
     invalidPromptString="${invalidResponseString:0:(( $invalidResponseStringLength - 1))}"
     fileNameSize=${#fileName}
-    if [ $fileNameSize > 5 ]; then
+    if [ $fileNameSize > 5 ] && [ $fileNameSize < 13 ]; then
       if [[ "${fileName:(( $fileNameSize - 4 )):1}" == "." ]]; then
         validFlag=1
       fi
@@ -422,7 +424,7 @@ sudo umount sdaTempMount
 sudo rmdir sdaTempMount
 
 
-drawMessage "SD Card loaded with $sourceFile as $fileName"
+drawMessage "SD Card loaded with $sourceFile as $fileName" "" "SD Card can be removed and" "Used to update main controller firmware"
 
 cd "$originalDir"
 exit 0
