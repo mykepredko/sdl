@@ -424,7 +424,7 @@ sudo umount sdaTempMount
 sudo rmdir sdaTempMount
 
 
-drawMessage "SD Card loaded with $sourceFile as $fileName" "" "SD Card can be removed and used to update main controller firmware"
+drawMessage "SD Card loaded with $sourceFile as $fileName" "" "Remove SD Card and update main controller firmware"
 
 
 cd "$originalDir"
