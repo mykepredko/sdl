@@ -304,7 +304,7 @@ getFileName() {
     read -p "$invalidPromptString Enter filename.ext: " fileName
     invalidPromptString="${invalidResponseString:0:(( $invalidResponseStringLength - 1))}"
     fileNameSize=${#fileName}
-    if [ $fileNameSize > 5 ] && [ $fileNameSize < 13 ]; then
+    if [ $fileNameSize > 4 ] && [ $fileNameSize < 13 ]; then
       if [[ "${fileName:(( $fileNameSize - 4 )):1}" == "." ]]; then
         validFlag=1
       fi
